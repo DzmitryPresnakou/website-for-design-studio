@@ -1,0 +1,140 @@
+:root {
+	--color1: #f3f2f2;
+	--color2: #ffffff;
+	--color3: #a6927f;
+	--color4: #bfb1a3;
+}
+
+.color1 {
+	background-color: var(--color1);
+}
+
+.color2 {
+	background-color: var(--color2);
+}
+
+.color3 {
+	background-color: var(--color3);
+}
+
+.color4 {
+	background-color: var(--color4);
+}
+
+#logo {
+	height: 90px;
+}
+
+.nav-item {
+	font-size: large;
+}
+
+.nav-item:hover {
+	border-bottom: 2px solid var(--color3);
+	font-weight: 500;
+	background-color: var(--color2);
+}
+
+.carousel, .carousel-item {
+	-webkit-transition: opacity 3s;
+	-moz-transition: opacity 3s;
+	-ms-transition: opacity 3s;
+	-o-transition: opacity 3s;
+	transition: opacity 3s;
+}
+
+.price {
+	background-color: var(--color1);
+	width: 150px;
+	margin: auto;
+	border-radius: 20px;
+	border-bottom: 2px solid var(--color3);
+}
+
+.icons {
+	height: 30px;
+}
+
+.price_comment {
+	font-size: 14px;
+	text-align: justify;
+	padding-top: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-top: 2px solid var(--color3);
+	border-bottom: 2px solid var(--color3);
+}
+
+.btn1 {
+	border-color: var(--color4);
+	background-color: var(--color2);
+}
+
+.btn1:hover {
+	background-color: var(--color3);
+	border-color: var(--color3);
+	/*    border: none;*/
+}
+
+.form-label {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+#frame {
+	min-height: 210px;
+}
+
+.saveForm {
+	background-color: var(--color1);
+	border: 2px solid var(--color4);
+}
+
+.textfield {
+	border-color: var(--color4);
+}
+
+.login {
+	width: 300px
+}
+
+.btn-color {
+	background-color: #0e1c36;
+	color: #fff;
+}
+
+.profile-image-pic {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+	border-color: var(--color4);
+}
+
+.cardbody-color {
+	background-color: var(--color1);
+}
+
+.msg {
+	color: green;
+}
+
+.foot_info {
+	font-size: 14px;
+}
+
+.card-img-top {
+	padding: 10px;
+}
+
+#gallery-modal .modal-img {
+	width: 100%;
+	heigt: 100%;
+}
+
+.link-secondary {
+	text-decoration: none;
+}
+
+
+
+
