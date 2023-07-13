@@ -1,7 +1,11 @@
 package by.itstep.designerWebsite.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,58 +46,58 @@ public class StartController {
 	public void init() {
 		Photo photo1 = new Photo();
 		photo1.setFileName("1001.jpg");
-		photo1.setTitle("Project 1");
+		photo1.setTitle("Victoria");
 		Photo photo2 = new Photo();
 		photo2.setFileName("1002.jpg");
-		photo2.setTitle("Project 2");
+		photo2.setTitle("Victoria");
 		Photo photo3 = new Photo();
 		photo3.setFileName("1003.jpg");
-		photo3.setTitle("Project 3");
+		photo3.setTitle("Victoria");
 		Photo photo4 = new Photo();
 		photo4.setFileName("1004.jpg");
-		photo4.setTitle("Project 4");
+		photo4.setTitle("Victoria");
 		Photo photo5 = new Photo();
 		photo5.setFileName("1005.jpg");
-		photo5.setTitle("Project 5");
+		photo5.setTitle("Victoria");
 		Photo photo6 = new Photo();
 		photo6.setFileName("1006.jpg");
-		photo6.setTitle("Project 6");
+		photo6.setTitle("Victoria");
 		Photo photo7 = new Photo();
 		photo7.setFileName("1007.jpg");
-		photo7.setTitle("Project 7");
+		photo7.setTitle("Victoria");
 		Photo photo8 = new Photo();
 		photo8.setFileName("1008.jpg");
-		photo8.setTitle("Project 8");
+		photo8.setTitle("Victoria");
 		Photo photo9 = new Photo();
 		photo9.setFileName("1009.jpg");
-		photo9.setTitle("Project 9");
+		photo9.setTitle("Victoria");
 		Photo photo10 = new Photo();
 		photo10.setFileName("1010.jpg");
-		photo10.setTitle("Project 10");
+		photo10.setTitle("Victoria");
 		Photo photo11 = new Photo();
 		photo11.setFileName("1011.jpg");
-		photo11.setTitle("Project 11");
+		photo11.setTitle("Victoria");
 		Photo photo12 = new Photo();
 		photo12.setFileName("1012.jpg");
-		photo12.setTitle("Project 12");
+		photo12.setTitle("Victoria");
 		Photo photo13 = new Photo();
 		photo13.setFileName("1013.jpg");
-		photo13.setTitle("Project 13");
+		photo13.setTitle("Zrobim");
 		Photo photo14 = new Photo();
 		photo14.setFileName("1014.jpg");
-		photo14.setTitle("Project 14");
+		photo14.setTitle("Zrobim");
 		Photo photo15 = new Photo();
 		photo15.setFileName("1015.jpg");
-		photo15.setTitle("Project 15");
+		photo15.setTitle("Zrobim");
 		Photo photo16 = new Photo();
 		photo16.setFileName("1016.jpg");
-		photo16.setTitle("Project 16");
+		photo16.setTitle("Zrobim");
 		Photo photo17 = new Photo();
 		photo17.setFileName("1017.jpg");
-		photo17.setTitle("Project 17");
+		photo17.setTitle("Zrobim");
 		Photo photo18 = new Photo();
 		photo18.setFileName("1018.jpg");
-		photo18.setTitle("Project 18");
+		photo18.setTitle("Zrobim");
 
 		photoRepository.save(photo1);
 		photoRepository.save(photo2);
@@ -113,10 +117,10 @@ public class StartController {
 		photoRepository.save(photo16);
 		photoRepository.save(photo17);
 		photoRepository.save(photo18);
-		
+
 		User admin = new User();
-		admin.setName("*****");
-		admin.setPassword(passwordEncoder.encode("*****"));
+		admin.setName("admin");
+		admin.setPassword(passwordEncoder.encode("admin"));
 		admin.setRole("ADMIN");
 		userRepository.save(admin);
 
@@ -245,7 +249,7 @@ public class StartController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		model.addAttribute("photos", photoRepository.findFirst6By());
+		model.addAttribute("photos", photoRepository.findAll());
 		model.addAttribute("packages", packageRepository.findAll());
 		model.addAttribute("stages", stageRepository.findAll());
 		return "home";

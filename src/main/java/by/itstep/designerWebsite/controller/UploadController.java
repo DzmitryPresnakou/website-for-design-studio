@@ -50,14 +50,14 @@ public class UploadController {
 
 			String fileName = multipartFile.getOriginalFilename();
 
-			if (photoRepository.findPhotoByfileName(fileName) != null) {
+			if (photoRepository.findPhotoByFileName(fileName) != null) {
 				do {
 					StringBuilder sb = new StringBuilder(fileName);
 					String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss_")
 							.format(Calendar.getInstance().getTime());
 					sb.insert(0, timeStamp);
 					fileName = sb.toString();
-				} while (photoRepository.findPhotoByfileName(fileName) == null);
+				} while (photoRepository.findPhotoByFileName(fileName) == null);
 			}
 
 			String fullPath = basePath + "\\src\\main\\resources\\static\\img\\" + fileName;

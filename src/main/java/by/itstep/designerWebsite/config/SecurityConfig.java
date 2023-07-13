@@ -33,9 +33,9 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/", "/about", "/portfolio", " /login", "/h2-console", "/h2-console/**")
+			.antMatchers("/", "/about", "/{id}", "/portfolio", " /login", "/h2-console", "/h2-console/**")
 			.permitAll()
-			.antMatchers("/save", "/{id}", "/portfolio/delete/{id}", "/users/delete/{id}", "/users", "/users/{id}")
+			.antMatchers("/save", "/portfolio/delete/{id}", "/users/delete/{id}", "/users", "/users/{id}")
 			.hasRole("ADMIN")
 			.and().formLogin().loginPage("/login").failureUrl("/login?error=true")
 			.usernameParameter("name").passwordParameter("password")

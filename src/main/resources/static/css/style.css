@@ -43,6 +43,15 @@
 	transition: opacity 3s;
 }
 
+.min-opacity {
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-ms-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+	
+}
+
 .price {
 	background-color: var(--color1);
 	width: 150px;
@@ -126,9 +135,9 @@
 	padding: 10px;
 }
 
-#gallery-modal .modal-img {
+#gallery-modal, #exampleModal, .modal-img, .carousel-item {
 	width: 100%;
-	heigt: 100%;
+	/*heigt: 100%;*/
 }
 
 .link-secondary {

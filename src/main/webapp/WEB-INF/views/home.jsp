@@ -10,15 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Presnakova Interior Home Design</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -48,10 +42,17 @@
 						<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}#contacts">Контакты</a></li>
 					</ul>
+					<div>
+						<a href="tel:+375291261203" class="link-secondary"> <img
+							class="icons me-2" src="img/a1.png" alt="A1:"> +375 29 126
+							12 03
+						</a>
+					</div>
 				</div>
 			</div>
 		</nav>
 	</header>
+
 	<section class="main_carousel">
 		<div class="container-fluid">
 			<div id="carouselExampleInterval" class="carousel carousel-fade"
@@ -95,37 +96,144 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- show photo on page -->
+
 		<div class="container">
 			<div class="row">
+				<c:set var="title" value="null" />
 				<c:forEach var="photo" items="${photos}">
-					<div class="col-xl-4 col-md-6 col-sm-12 mb-3">
-						<div class="card mb-3 w-100 shadow">
-							<img src="img/${photo.fileName}"
-								class="card-img-top gallery-item" alt="...">
-							<div class="card-body">
-								<p class="card-text">${photo.title}</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="modal fade" id="gallery-modal" tabindex="-1"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body w-100">
-									<img src="img/${photo.fileName}" class="modal-img"
-										alt="modal img">
+					<c:if test="${!title.equals(photo.title)}">
+						<div class="col-xl-4 col-md-6 col-sm-12 mb-3">
+							<div class="card mb-3 w-100 shadow">
+								<a data-bs-toggle="modal" data-bs-target="#exampleModal"> <img
+									src="img/${photo.fileName}" class="card-img-top gallery-item"
+									alt="${photo.title}">
+								</a>
+								<div class="card-body">
+									<p class="card-text title">${photo.title}</p>
 								</div>
 							</div>
 						</div>
-					</div>
+						<c:set var="title" value="${photo.title}" />
+					</c:if>
 				</c:forEach>
+
+
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
+						<div class="modal-content">
+
+							<%-- 							<div class="modal-header">
+							<p class="card-text title">${title}</p>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div> --%>
+
+							<!-- carousel starts -->
+
+
+
+
+							<script>
+	
+								document.addEventListener("click", function(e) {
+									if (e.target.classList
+											.contains("gallery-item")) {
+										var groupTitle = e.target
+												.getAttribute("alt");
+										var arrayOfPhotos = new Array();
+										
+										let inner = document.getElementById('carouselInner');
+										inner.innerHTML = '';
+										
+									}
+																		
+									<c:forEach items="${photos}" var="item">
+									
+									if (groupTitle == "${item.title}") {
+										var photo = {
+												id : "${item.id}",
+												title : "${item.title}",
+												fileName : "${item.fileName}"
+											};
+										
+											arrayOfPhotos.push(photo);
+									}
+				
+									</c:forEach>
+									
+									if (arrayOfPhotos) {
+										var passed = 'false';
+										arrayOfPhotos.forEach((element) => {
+											
+											var fileName = 'img/' + element.fileName;
+											var groupTitle = element.title;
+								
+											let inner = document.getElementById('carouselInner');
+											let carouselDiv = document.createElement('div');
+											
+											var image = document.createElement('img');
+											image.setAttribute('src', fileName);
+		
+											var title = document.createElement('p');
+											title.textContent = groupTitle;
+											carouselDiv.setAttribute('data-bs-interval', 'false');
+											image.classList.add('modal-img');
+											image.setAttribute('alt', '...');
+		
+										if (passed === 'false') {
+											carouselDiv.classList.add('carousel-item', 'active', 'min-opacity');
+										
+										}
+										
+										if (passed === 'true') {
+											carouselDiv.classList.add('carousel-item', 'min-opacity');
+										
+										}
+										carouselDiv.appendChild(image);
+										carouselDiv.appendChild(title);
+										inner.appendChild(carouselDiv);
+										passed = 'true';
+										  
+										});
+
+								}
+									
+								})	
+
+									</script>
+
+
+							<div class="modal-body w-100">
+								<div id="carouselExampleControls"
+									class="carousel slide carousel-fade min-opacity"
+									data-bs-ride="carousel">
+									<div class="carousel-inner" id="carouselInner"></div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+
+							<!-- carousel ends -->
+
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
+
+
 		<div class="container mb-3 mt-3">
 			<div class="row">
 				<div class="col-12 text-center mb-5">
@@ -278,12 +386,9 @@
 			</div>
 		</div>
 	</footer>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-		crossorigin="anonymous"></script>
-	<script src="js/modalImage.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/modalCarousel.js"></script>
+	<!-- 	<script src="js/modalImage.js"></script> -->
 
 </body>
 
