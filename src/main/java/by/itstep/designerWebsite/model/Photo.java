@@ -12,19 +12,18 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "photos")
-public class Photo {
+public class Photo implements Comparable<Photo> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "{title.empty}")
 	private String title;
-	
+
 	@NotBlank(message = "{fileName.empty}")
 //	@Column(name = "fileName", unique=true)
 	private String fileName;
-
 
 	public Long getId() {
 		return id;
@@ -71,5 +70,13 @@ public class Photo {
 	@Override
 	public String toString() {
 		return "Photo [id=" + id + ", fileName=" + fileName + ", title=" + title + "]";
+	}
+
+	@Override
+	public int compareTo(Photo o) {
+		if (getTitle() == null || o.getTitle() == null) {
+			return 0;
+		}
+		return getTitle().compareTo(o.getTitle());
 	}
 }

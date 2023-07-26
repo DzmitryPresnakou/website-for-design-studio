@@ -104,37 +104,34 @@
 				<c:set var="title" value="null" />
 				<c:forEach var="photo" items="${photos}">
 					<c:if test="${!title.equals(photo.title)}">
-						<div class="col-xl-4 col-md-6 col-sm-12 mb-3">
-							<div class="card mb-3 w-100 shadow">
+						<div class="photocard col-xl-4 col-md-6 col-sm-12 mb-3 shadow">
+							<div class="cardItem w-100 shadow">
+
 								<a data-bs-toggle="modal" data-bs-target="#exampleModal"> <img
 									src="img/${photo.fileName}" class="card-img-top gallery-item"
 									alt="${photo.title}">
 								</a>
-								<div class="card-body">
-									<p class="card-text title">${photo.title}</p>
-								</div>
+
+							</div>
+							<div class="card-body">
+								<p class="card-text title">${photo.title}</p>
 							</div>
 						</div>
 						<c:set var="title" value="${photo.title}" />
 					</c:if>
 				</c:forEach>
 
-
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-dialog modal-xl modal-dialog-centered">
 						<div class="modal-content">
 
-							<%-- 							<div class="modal-header">
-							<p class="card-text title">${title}</p>
+							<!-- 							<div class="modal-header">
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
-							</div> --%>
+							</div> -->
 
 							<!-- carousel starts -->
-
-
-
 
 							<script>
 	
@@ -169,17 +166,24 @@
 										arrayOfPhotos.forEach((element) => {
 											
 											var fileName = 'img/' + element.fileName;
-											var groupTitle = element.title;
+											/* var groupTitle = element.title; */
 								
 											let inner = document.getElementById('carouselInner');
 											let carouselDiv = document.createElement('div');
 											
 											var image = document.createElement('img');
 											image.setAttribute('src', fileName);
+											
+/* 											var cardBody = document.createElement('div');
+											
 		
 											var title = document.createElement('p');
-											title.textContent = groupTitle;
+											title.textContent = groupTitle; */
+											
 											carouselDiv.setAttribute('data-bs-interval', 'false');
+/* 											cardBody.classList.add('card-body');
+											title.classList.add('card-text');
+											title.classList.add('title'); */
 											image.classList.add('modal-img');
 											image.setAttribute('alt', '...');
 		
@@ -192,19 +196,17 @@
 											carouselDiv.classList.add('carousel-item', 'min-opacity');
 										
 										}
+										/* cardBody.appendChild(title); */
 										carouselDiv.appendChild(image);
-										carouselDiv.appendChild(title);
+										/* carouselDiv.appendChild(cardBody); */
 										inner.appendChild(carouselDiv);
 										passed = 'true';
 										  
 										});
-
-								}
-									
+								}					
 								})	
 
 									</script>
-
 
 							<div class="modal-body w-100">
 								<div id="carouselExampleControls"
@@ -231,8 +233,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 		<div class="container mb-3 mt-3">
 			<div class="row">

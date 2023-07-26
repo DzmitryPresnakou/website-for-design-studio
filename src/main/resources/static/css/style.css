@@ -35,7 +35,8 @@
 	background-color: var(--color2);
 }
 
-.carousel, .carousel-item {
+.carousel,
+.carousel-item {
 	-webkit-transition: opacity 3s;
 	-moz-transition: opacity 3s;
 	-ms-transition: opacity 3s;
@@ -49,7 +50,7 @@
 	-ms-transition: opacity 0.5s;
 	-o-transition: opacity 0.5s;
 	transition: opacity 0.5s;
-	
+
 }
 
 .price {
@@ -135,7 +136,10 @@
 	padding: 10px;
 }
 
-#gallery-modal, #exampleModal, .modal-img, .carousel-item {
+#gallery-modal,
+#exampleModal,
+.modal-img,
+.carousel-item {
 	width: 100%;
 	/*heigt: 100%;*/
 }
@@ -144,6 +148,42 @@
 	text-decoration: none;
 }
 
+.photocard {
 
+	margin: auto;
+	padding: 10px;
+	border-radius: 10px;
+	
+}
 
+.cardItem {
 
+	width: 100%;
+	height: 0%;
+	padding-top: 80%;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 0;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.cardItem img {
+	padding: 0;
+	height: 100%;
+	width: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+/*.card-body {
+	padding: 0px 10px 10px;
+}*/
+
+.modal-body {
+	padding: 1.5%;
+}

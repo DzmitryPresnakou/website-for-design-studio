@@ -6,11 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -37,6 +43,7 @@ public class UploadController {
 	@Autowired
 	private PhotoRepository photoRepository;
 
+	@SuppressWarnings("unchecked")
 	@PostMapping("/portfolio")
 	public String handleFileUpload(@RequestParam(name = "file", required = false) MultipartFile multipartFile,
 			@Valid @ModelAttribute Photo photo, BindingResult result, Model model) throws IOException {

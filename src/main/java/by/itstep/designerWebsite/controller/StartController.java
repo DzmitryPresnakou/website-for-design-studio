@@ -2,6 +2,8 @@ package by.itstep.designerWebsite.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +11,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -249,7 +252,7 @@ public class StartController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		model.addAttribute("photos", photoRepository.findAll());
+		model.addAttribute("photos", photoRepository.findByOrderByTitle());
 		model.addAttribute("packages", packageRepository.findAll());
 		model.addAttribute("stages", stageRepository.findAll());
 		return "home";
@@ -262,7 +265,7 @@ public class StartController {
 
 	@GetMapping("/portfolio")
 	public String getAllPhotos(Model model) {
-		model.addAttribute("photos", photoRepository.findAll());
+		model.addAttribute("photos", photoRepository.findByOrderByTitle());
 		return "portfolio";
 	}
 
